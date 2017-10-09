@@ -1,0 +1,24 @@
+---
+- hosts: localhost
+  connection: local
+  vars_files:
+    - './vars/main.yml'
+
+  tasks:
+    - name: Pull docker image
+      docker_image:
+        name: "{{ image_name }}"
+        rm: true
+
+    - name: Start docker container
+      docker_container:
+        name: "{{ container_name }}"
+        image: "{{ image_name }}"
+        state: "{{ container_state }}"
+        restart: true
+        restart_policy: always
+			ports:
+				- "127.0.0.1:8989:8989"
+      volumes:
+        - /docker/sonarr:/config
+        - /data/media/TV:/data

@@ -1,0 +1,4 @@
+---
+container_name: sonarr
+image_name: limed/sonarr
+container_state: started
