@@ -1,4 +1,4 @@
 #!/bin/ash
 
 PATH=/usr/bin:/usr/local/bin:$PATH
-su -c '/usr/bin/mono /app/NzbDrone/NzbDrone.exe'
+su -c '/usr/bin/mono /app/NzbDrone/NzbDrone.exe -nobrowser -data=/config'

@@ -4,7 +4,7 @@ MAINTAINER limed@sudoers.org
 ENV LANG='en_US.UTF-8' \
     LANGUAGE='en_US.UTF-8' \
     TERM='xterm' \
-    VERSION='2.0.0.4389'
+    VERSION='2.0.0.4949'
 
 RUN echo http://dl-4.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories && \
     apk -U upgrade && \
@@ -19,15 +19,14 @@ RUN echo http://dl-4.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositorie
 
 RUN mkdir -p /data \
             /app \
-            /config \
-            /root/.config/NzbDrone
+            /config
 
 RUN wget http://download.sonarr.tv/v2/master/mono/NzbDrone.master.$VERSION.mono.tar.gz -O NzbDrone.tgz && \
     tar xzvf NzbDrone.tgz -C /app && \
     rm NzbDrone.tgz
 
 EXPOSE 8989 9898
-VOLUME [ "/data", "/root/.config/NzbDrone" ]
+VOLUME [ "/data", "/config" ]
 
 ADD files/start.sh /start.sh
 
